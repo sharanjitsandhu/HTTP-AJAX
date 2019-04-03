@@ -1,0 +1,13 @@
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+}
+.heading {
+  font-family: "Londrina Shadow", cursive;
+  color: #62a8a8;
+  text-indent: 50px;
+  letter-spacing: 3px;
+  word-spacing: 10px;
+}
