@@ -7,7 +7,42 @@
 .heading {
   font-family: "Londrina Shadow", cursive;
   color: #62a8a8;
-  text-indent: 50px;
-  letter-spacing: 3px;
-  word-spacing: 10px;
+  text-indent: 40px;
+  letter-spacing: 8px;
+  background-image: radial-gradient(white 65%, #62a8a8 5%, white);
+  margin: 7px 0;
+  font-size: 50px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  background: #62a8a8;
+  height: 60px;
+  margin-bottom: 40px;
+  font-family: "Kelly Slab", cursive;
+}
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  margin: 0 1px;
+  padding: 18px 15px;
+}
+
+.nav-links a:last-of-type {
+  margin-right: 0;
+}
+
+.nav-links a.active {
+  color: #c0c0c0;
+}
+.nav-links a:hover {
+  background: lightslategray;
 }

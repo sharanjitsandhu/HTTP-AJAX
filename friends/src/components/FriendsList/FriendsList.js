@@ -5,16 +5,16 @@ function FriendsList(props) {
   return (
     <div className="friends-list-wrapper">
       {props.friends.map(i => (
-        <>
+        <div key={i.id}>
           <div className="friends-list">
             <p>
               <span>{i.id}. </span>
               {i.name}
             </p>
             <p className="friends-email">{i.email}</p>
-            <p>{i.age} yr</p>
+            <p className="friends-age">{i.age} yr</p>
           </div>
-        </>
+        </div>
       ))}
     </div>
   );

@@ -1,0 +1,55 @@
+form {
+  margin: 0 auto;
+  width: 300px;
+}
+input {
+  outline: none;
+}
+.form-wrapper {
+  padding: 10px 300px;
+  display: flex;
+  justify-content: column;
+  flex-direction: column;
+  max-width: 300px;
+}
+
+.input-container {
+  display: flex;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.icon {
+  padding: 10px;
+  background: #62a8a8;
+  color: white;
+  min-width: 50px;
+  text-align: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  outline: none;
+}
+
+.input-field:focus {
+  border: 2px solid #62a8a8;
+}
+
+.btn {
+  background: #62a8a8;
+  color: white;
+  padding: 15px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+  font-size: 15px;
+  font-weight: bold;
+  outline: none;
+}
+
+.btn:hover {
+  opacity: 1;
+}
