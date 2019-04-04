@@ -6,11 +6,13 @@ input {
   outline: none;
 }
 .form-wrapper {
-  padding: 10px 300px;
+  padding: 30px 100px;
   display: flex;
   justify-content: column;
   flex-direction: column;
   max-width: 300px;
+  background-image: linear-gradient(to bottom, gray, white);
+  border-radius: 1%;
 }
 
 .input-container {
@@ -48,6 +50,8 @@ input {
   font-size: 15px;
   font-weight: bold;
   outline: none;
+  font-family: "Kelly Slab", cursive;
+  letter-spacing: 3px;
 }
 
 .btn:hover {
