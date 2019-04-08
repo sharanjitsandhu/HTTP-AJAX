@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Route, NavLink } from "react-router-dom";
+import { Route, NavLink, Switch } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 import FriendsList from "./components/FriendsList/FriendsList";
@@ -7,6 +7,7 @@ import AddFriends from "./components/AddFriends/AddFriends";
 import Home from "./components/Home/Home";
 import Friends from "./components/Friends";
 import UpdateFriendsList from "./components/UpdateFriendsList";
+import NotFoundPage from "./components/NotFoundPage";
 
 class App extends Component {
   constructor() {
@@ -81,6 +82,7 @@ class App extends Component {
         console.log(err);
       });
   };
+
   setActiveFriend = friend => {
     this.setState({ activeFriend: friend });
   };
@@ -98,48 +100,52 @@ class App extends Component {
             <NavLink to="/form">Add Friends</NavLink>
           </div>
         </nav>
+        <Switch>
+          <Route exact path="/" render={() => <Home />} />
+          <Route
+            exact
+            path="/friends"
+            render={() => (
+              <FriendsList
+                // history={props.history}
+                // items={this.state.items}
+                // location={props.location}
+                // match={props.match}
+                //--use the spread operator--//
 
-        <Route exact path="/" render={() => <Home />} />
-        <Route
-          exact
-          path="/friends"
-          render={() => (
-            <FriendsList
-              // history={props.history}
-              // items={this.state.items}
-              // location={props.location}
-              // match={props.match}
-              //--use the spread operator--//
-
-              friends={this.state.friends}
-            />
-          )}
-        />
-        <Route
-          path="/friends/:id"
-          render={props => (
-            <Friends
-              {...props}
-              friends={this.state.friends}
-              deleteFriend={this.deleteFriend}
-              setActiveFriend={this.setActiveFriend}
-            />
-          )}
-        />
-        <Route
-          path="/form"
-          render={props => <AddFriends {...props} addFriend={this.addFriend} />}
-        />
-        <Route
-          path="/update-friend"
-          render={props => (
-            <UpdateFriendsList
-              {...props}
-              updateFriend={this.updateFriend}
-              activeFriend={this.state.activeFriend}
-            />
-          )}
-        />
+                friends={this.state.friends}
+              />
+            )}
+          />
+          <Route
+            path="/friends/:id"
+            render={props => (
+              <Friends
+                {...props}
+                friends={this.state.friends}
+                deleteFriend={this.deleteFriend}
+                setActiveFriend={this.setActiveFriend}
+              />
+            )}
+          />
+          <Route
+            path="/form"
+            render={props => (
+              <AddFriends {...props} addFriend={this.addFriend} />
+            )}
+          />
+          <Route
+            path="/update-friend"
+            render={props => (
+              <UpdateFriendsList
+                {...props}
+                updateFriend={this.updateFriend}
+                activeFriend={this.state.activeFriend}
+              />
+            )}
+          />
+          <Route component={NotFoundPage} />
+        </Switch>
       </div>
     );
   }

@@ -46,3 +46,20 @@ nav {
 .nav-links a:hover {
   background: lightslategray;
 }
+
+.not-found-page {
+  color: black;
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: 0em;
+}
+.broken-link {
+  color: white;
+  font-size: 150px;
+  background: lightslategray;
+  padding: 50px;
+  border: none;
+  border-radius: 50%;
+  border: 6px dotted #62a8a8;
+}
