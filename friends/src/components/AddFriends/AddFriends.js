@@ -12,6 +12,10 @@ class AddFriends extends Component {
   };
 
   changeHandler = ev => {
+    //If you want to access the event properties in an asynchronous way,
+    //you should call event.persist() on the event,
+    //which will remove the synthetic event from the pool
+    //and allow references to the event to be retained by user code.
     ev.persist();
     let value = ev.target.value;
     if (ev.target.name === "age") {

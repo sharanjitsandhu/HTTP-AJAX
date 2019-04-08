@@ -5,6 +5,7 @@ import "./App.css";
 import FriendsList from "./components/FriendsList/FriendsList";
 import AddFriends from "./components/AddFriends/AddFriends";
 import Home from "./components/Home/Home";
+import Friends from "./components/Friends";
 
 class App extends Component {
   constructor() {
@@ -49,6 +50,21 @@ class App extends Component {
       });
   };
 
+  // function to delete a friend
+  deleteFriend = id => {
+    axios
+      .delete(`http://localhost:5000/friends/${id}`)
+      .then(res => {
+        this.setState({ friends: res.data });
+        console.log(res);
+        // redirect
+        this.props.history.push("/friends");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     return (
       <div className="App">
@@ -65,16 +81,28 @@ class App extends Component {
 
         <Route exact path="/" render={() => <Home />} />
         <Route
+          exact
           path="/friends"
-          render={props => (
+          render={() => (
             <FriendsList
               // history={props.history}
               // items={this.state.items}
               // location={props.location}
               // match={props.match}
               //--use the spread operator--//
+
+              friends={this.state.friends}
+            />
+          )}
+        />
+        <Route
+          path="/friends/:id"
+          render={props => (
+            <Friends
               {...props}
               friends={this.state.friends}
+              deleteFriend={this.deleteFriend}
+              updateFriend={this.updateFriend}
             />
           )}
         />
