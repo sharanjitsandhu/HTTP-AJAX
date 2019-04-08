@@ -11,6 +11,8 @@ function FriendsList(props) {
 
   const updateFriend = e => {
     e.preventDefault();
+    props.setActiveFriend(friend);
+    props.history.push("/update-friend");
   };
 
   const deleteFriend = evt => {
@@ -21,10 +23,7 @@ function FriendsList(props) {
   return (
     <div className="friends-list-wrapper">
       <div className="friends-list">
-        <p>
-          <span>{friend.id}. </span>
-          {friend.name}
-        </p>
+        <p>{friend.name}</p>
 
         <p className="friends-email">{friend.email}</p>
         <p className="friends-age">{friend.age} yr</p>

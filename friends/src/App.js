@@ -6,12 +6,14 @@ import FriendsList from "./components/FriendsList/FriendsList";
 import AddFriends from "./components/AddFriends/AddFriends";
 import Home from "./components/Home/Home";
 import Friends from "./components/Friends";
+import UpdateFriendsList from "./components/UpdateFriendsList";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      friends: []
+      friends: [],
+      activeFriend: null
     };
   }
 
@@ -65,6 +67,24 @@ class App extends Component {
       });
   };
 
+  // function to update a friend
+  updateFriend = updatedFriend => {
+    axios
+      .put(`http://localhost:5000/friends/${updatedFriend.id}`, updatedFriend)
+      .then(res => {
+        this.setState({ friends: res.data });
+        console.log(res);
+        // redirect
+        this.props.history.push("/friends");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+  setActiveFriend = friend => {
+    this.setState({ activeFriend: friend });
+  };
+
   render() {
     return (
       <div className="App">
@@ -102,13 +122,23 @@ class App extends Component {
               {...props}
               friends={this.state.friends}
               deleteFriend={this.deleteFriend}
-              updateFriend={this.updateFriend}
+              setActiveFriend={this.setActiveFriend}
             />
           )}
         />
         <Route
           path="/form"
           render={props => <AddFriends {...props} addFriend={this.addFriend} />}
+        />
+        <Route
+          path="/update-friend"
+          render={props => (
+            <UpdateFriendsList
+              {...props}
+              updateFriend={this.updateFriend}
+              activeFriend={this.state.activeFriend}
+            />
+          )}
         />
       </div>
     );

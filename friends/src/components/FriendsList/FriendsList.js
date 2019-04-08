@@ -5,17 +5,17 @@ import "./FriendsList.css";
 function FriendsList(props) {
   return (
     <div className="friends-list-wrapper">
-      {props.friends.map(i => (
-        <div key={i.id}>
-          <Link to={`/friends/${i.id}`}>
+      {props.friends.map(friend => (
+        <div key={friend.id}>
+          <Link to={`/friends/${friend.id}`}>
             <div className="friends-list">
               <p>
-                {/* <span>{i.id}. </span> */}
-                {i.name}
+                {/* <span>{friend.id}. </span> */}
+                {friend.name}
               </p>
 
-              <p className="friends-email">{i.email}</p>
-              <p className="friends-age">{i.age} yr</p>
+              <p className="friends-email">{friend.email}</p>
+              <p className="friends-age">{friend.age} yr</p>
             </div>
           </Link>
         </div>
